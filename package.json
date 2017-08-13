@@ -7,9 +7,14 @@
     "start": "./node_modules/.bin/electron ."
   },
   "lint-staged": {
-    "*.js": ["eslint -- --fix .", "git add"]
+    "*.js": [
+      "eslint -- --fix .",
+      "git add"
+    ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "ramda": "^0.24.1"
+  },
   "devDependencies": {
     "electron": "^1.7.5",
     "eslint": "^4.4.1",

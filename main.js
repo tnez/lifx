@@ -1,43 +1,14 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
-const url = require('url')
+/* eslint-disable no-unused-vars */
 
-// keep global ref to main window
-let win
+const { app } = require('electron')
+const LifxPanel = require('./app/LifxPanel')
+const LifxTray = require('./app/LifxTray')
 
-function createWindow() {
-  win = new BrowserWindow({
-    width: 800,
-    height: 600,
-  })
+let panel = undefined
+let tray = undefined
 
-  win.loadURL(
-    url.format({
-      pathname: path.join(__dirname, 'index.html'),
-      protocol: 'file:',
-      slashes: true,
-    }),
-  )
+app.on('ready', () => {
+  panel = new LifxPanel(`file://${__dirname}/index.html`)
 
-  win.on('closed', () => {
-    win = null
-  })
-}
-
-app.on('ready', createWindow)
-
-app.on('window-all-closed', () => {
-  if (process.platform === 'darwin') {
-    return null
-  }
-
-  app.quit()
-})
-
-app.on('activate', () => {
-  if (win !== null) {
-    return null
-  }
-
-  createWindow()
+  tray = new LifxTray({ panel: panel })
 })
