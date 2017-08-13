@@ -5,17 +5,19 @@ const url = require('url')
 // keep global ref to main window
 let win
 
-function createWindow () {
+function createWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
   })
 
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true,
-  }))
+  win.loadURL(
+    url.format({
+      pathname: path.join(__dirname, 'index.html'),
+      protocol: 'file:',
+      slashes: true,
+    }),
+  )
 
   win.on('closed', () => {
     win = null
@@ -25,13 +27,17 @@ function createWindow () {
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
-  if (process.platform === 'darwin') { return null }
+  if (process.platform === 'darwin') {
+    return null
+  }
 
   app.quit()
 })
 
 app.on('activate', () => {
-  if (win !== null) { return null }
+  if (win !== null) {
+    return null
+  }
 
   createWindow()
 })
