@@ -23,10 +23,17 @@ class LifxPanel extends BrowserWindow {
     this.hide()
   }
 
-  toggleVisibility() {
+  toggleVisibility(x, y) {
     if (this.isVisible()) {
       this.hide()
     } else {
+      const { height, width } = this.getBounds()
+      this.setBounds({
+        x: x - width / 2,
+        y: process.platform === 'darwin' ? y : y - height,
+        height,
+        width,
+      })
       this.show()
     }
   }

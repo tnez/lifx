@@ -25,10 +25,9 @@ class LifxTray extends Tray {
     ])
   }
 
-  onClick(/* evt, bounds */) {
-    // const { x, y } = bounds
-
-    this.panel.toggleVisibility()
+  onClick(_, bounds) {
+    const { x, y } = bounds
+    this.panel.toggleVisibility(x, y)
   }
 
   onRightClick() {
