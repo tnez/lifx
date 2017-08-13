@@ -19,7 +19,6 @@ class LifxTray extends Tray {
     return Menu.buildFromTemplate([
       {
         label: 'Quit',
-        accelerator: 'Command+Q',
         click: app.quit,
       },
     ])

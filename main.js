@@ -8,7 +8,7 @@ let panel = undefined
 let tray = undefined
 
 app.on('ready', () => {
+  app.dock.hide()
   panel = new LifxPanel(`file://${__dirname}/index.html`)
-
   tray = new LifxTray({ panel: panel })
 })
