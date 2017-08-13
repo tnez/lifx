@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "main": "main.js",
   "scripts": {
+    "precommit": "lint-staged",
     "start": "./node_modules/.bin/electron ."
+  },
+  "lint-staged": {
+    "*.js": ["eslint -- --fix .", "git add"]
   },
   "dependencies": {},
   "devDependencies": {
@@ -11,6 +15,8 @@
     "eslint": "^4.4.1",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.3",
     "prettier": "^1.5.3"
   }
 }
